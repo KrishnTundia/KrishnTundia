@@ -1,354 +1,4 @@
-import os
-import numpy as np
-from PIL import Image, ImageDraw
-
-# Hand-crafted chunky 8x8 Game Boy / 16-bit Arcade Title Pixel Font (2px bold strokes, beveled corners)
-GLYPHS = {
-    'K': [
-        "11000110",
-        "11001100",
-        "11011000",
-        "11110000",
-        "11011000",
-        "11001100",
-        "11000110",
-        "11000110",
-    ],
-    'R': [
-        "11111100",
-        "11000110",
-        "11000110",
-        "11111100",
-        "11011000",
-        "11001100",
-        "11000110",
-        "11000110",
-    ],
-    'I': [
-        "11111100",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-        "11111100",
-    ],
-    'S': [
-        "01111110",
-        "11000000",
-        "11000000",
-        "01111100",
-        "00000110",
-        "00000110",
-        "11000110",
-        "01111100",
-    ],
-    'H': [
-        "11000110",
-        "11000110",
-        "11000110",
-        "11111110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-    ],
-    'N': [
-        "11000110",
-        "11100110",
-        "11110110",
-        "11011110",
-        "11001110",
-        "11000110",
-        "11000110",
-        "11000110",
-    ],
-    'T': [
-        "11111110",
-        "11111110",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-        "00110000",
-    ],
-    'U': [
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "01111100",
-    ],
-    'D': [
-        "11111000",
-        "11001100",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11001100",
-        "11111000",
-    ],
-    'A': [
-        "01111100",
-        "11000110",
-        "11000110",
-        "11111110",
-        "11000110",
-        "11000110",
-        "11000110",
-        "11000110",
-    ],
-    ' ': [
-        "0000",
-        "0000",
-        "0000",
-        "0000",
-        "0000",
-        "0000",
-        "0000",
-        "0000",
-    ],
-}
-
-# Tighten trailing empty columns per glyph for authentic proportional pixel kerning
-def trim_glyph(rows):
-    if all(set(r) == {'0'} for r in rows):
-        return rows
-    max_c = 0
-    for r in rows:
-        for i, ch in enumerate(r):
-            if ch == '1' and i > max_c:
-                max_c = i
-    return [r[:max_c + 1] for r in rows]
-
-GLYPHS = {k: trim_glyph(v) for k, v in GLYPHS.items()}
-
-TEXT = "KRISHN TUNDIA"
-LETTER_GAP = 2   # 2px between letters (gives room for 3D extrusion & crisp outline!)
-DEPTH = 4        # 4px diagonal 3D Game Boy pink extrusion!
-
-# Palette (RGBA)
-COL_BG         = (4, 8, 18, 255)      # #040812 abyssal cyber dark
-COL_GRID       = (8, 18, 36, 255)     # subtle CRT scanline/bg tint
-COL_BORDER     = (34, 211, 238, 255)  # #22d3ee neon cyan border
-COL_OUTLINE    = (22, 4, 34, 255)     # #160422 deep plum-black Game Boy pixel outline
-# 3D Pink extrusion gradient (near -> far)
-PINK_DEPTH = [
-    (255, 105, 180, 255),  # d=1: hot bubble pink #ff69b4
-    (244, 63, 142, 255),   # d=2: neon pink-magenta #f43f8e
-    (219, 39, 119, 255),   # d=3: deep rose pink #db2777
-    (157, 23, 77, 255),    # d=4: shadow berry pink #9d174d
-]
-# Yellow front face gradient across rows 0..7
-YEL_FACE = [
-    (254, 249, 195, 255),  # row 0: glossy cream-yellow highlight #fef9c3
-    (254, 240, 138, 255),  # row 1: bright lemon #fef08a
-    (253, 224, 71, 255),   # row 2: Game Boy electric yellow #fde047
-    (253, 224, 71, 255),   # row 3: electric yellow #fde047
-    (250, 204, 21, 255),   # row 4: rich gold #facc15
-    (250, 204, 21, 255),   # row 5: rich gold #facc15
-    (234, 179, 8, 255),    # row 6: warm amber gold #eab308
-    (217, 119, 6, 255),    # row 7: bottom bevel amber #d97706
-]
-COL_GLINT      = (255, 255, 255, 255) # crisp white Game Boy gleam
-COL_GLINT_SOFT = (254, 249, 195, 255)
-COL_SPARK_Y    = (253, 224, 71, 255)
-COL_SPARK_P    = (255, 105, 180, 255)
-COL_SPARK_C    = (103, 232, 249, 255)
-
-# Compute character x positions
-char_positions = []
-cur_x = 0
-for ch in TEXT:
-    g = GLYPHS[ch]
-    char_positions.append((ch, cur_x, len(g[0])))
-    cur_x += len(g[0]) + (0 if ch == ' ' else LETTER_GAP)
-total_text_w = cur_x - LETTER_GAP
-print(f"Base text width: {total_text_w}px, height: 8px (+{DEPTH}px 3D depth)")
-
-# Base pixel canvas size
-PAD_X = 10
-PAD_Y = 9
-BASE_W = total_text_w + DEPTH + PAD_X * 2   # ~124
-BASE_H = 8 + DEPTH + PAD_Y * 2              # 30
-SCALE = 3  # 3x nearest-neighbor -> ~372 x 90 px (super small, ultra crisp!)
-print(f"Base canvas: {BASE_W}x{BASE_H} -> Scaled ({SCALE}x): {BASE_W*SCALE}x{BASE_H*SCALE}")
-
-def render_gb_frame(frame_idx, total_frames, transparent=False):
-    canvas = np.zeros((BASE_H, BASE_W, 4), dtype=np.uint8)
-    if not transparent:
-        canvas[:, :] = COL_BG
-        # Subtle Game Boy/CRT alternating horizontal scanlines
-        canvas[1::2, :] = (6, 12, 25, 255)
-
-    # First collect all letter pixels (with subtle 1px classic Game Boy wave per letter!)
-    # Wave only on animated frames; static transparent PNG uses wave=0
-    face_mask = np.zeros((BASE_H, BASE_W), dtype=bool)
-    face_row_map = np.full((BASE_H, BASE_W), -1, dtype=np.int16)
-
-    for idx, (ch, cx, cw) in enumerate(char_positions):
-        if ch == ' ':
-            continue
-        g = GLYPHS[ch]
-        # Subtle 1px retro wave ripple
-        if frame_idx is not None:
-            phase = (frame_idx / total_frames) * 2 * np.pi - idx * 0.55
-            dy = -1 if np.sin(phase) > 0.65 else 0
-        else:
-            dy = 0
-        ox = PAD_X + cx
-        oy = PAD_Y + dy
-        for r in range(8):
-            for c in range(cw):
-                if g[r][c] == '1':
-                    face_mask[oy + r, ox + c] = True
-                    face_row_map[oy + r, ox + c] = r
-
-    # Build combined silhouette of face + 3D extrusion for crisp 1px outer pixel outline
-    sil = face_mask.copy()
-    for d in range(1, DEPTH + 1):
-        shifted = np.zeros_like(face_mask)
-        shifted[d:, d:] = face_mask[:-d, :-d]
-        sil |= shifted
-
-    # Dilate silhouette by 1px (8-connected) for crisp Game Boy dark outline
-    outline = np.zeros_like(sil)
-    for dy in (-1, 0, 1):
-        for dx in (-1, 0, 1):
-            if dx == 0 and dy == 0:
-                continue
-            ys = slice(max(0, dy), BASE_H + min(0, dy))
-            xs = slice(max(0, dx), BASE_W + min(0, dx))
-            ys_src = slice(max(0, -dy), BASE_H + min(0, -dy))
-            xs_src = slice(max(0, -dx), BASE_W + min(0, -dx))
-            outline[ys, xs] |= sil[ys_src, xs_src]
-    outline &= ~sil
-
-    # 1. Paint outline
-    canvas[outline] = COL_OUTLINE
-
-    # 2. Paint 3D Pink Extrusion from farthest (d=DEPTH) to nearest (d=1)
-    for d in range(DEPTH, 0, -1):
-        shifted = np.zeros_like(face_mask)
-        shifted[d:, d:] = face_mask[:-d, :-d]
-        # Classic Game Boy 3D lighting: bottom-side pixels slightly deeper pink than right-side pixels!
-        canvas[shifted] = PINK_DEPTH[d - 1]
-        # Add subtle hot-pink rim highlight on top-right corner edges of d=1
-        if d == 1:
-            # Pixels in d=1 that are directly right of face (not below) get extra bright pink
-            right_only = np.zeros_like(face_mask)
-            right_only[:, 1:] = face_mask[:, :-1]
-            bright_pink = shifted & right_only & (~face_mask)
-            canvas[bright_pink] = (255, 128, 196, 255)
-
-    # 3. Paint Yellow Front Face (with Game Boy vertical gradient)
-    ys, xs = np.where(face_mask)
-    for y, x in zip(ys, xs):
-        r = face_row_map[y, x]
-        canvas[y, x] = YEL_FACE[r]
-
-    # 4. Animated Diagonal Specular Glint Sweep across yellow front face!
-    if frame_idx is not None:
-        glint_pos = -18 + (frame_idx / total_frames) * (BASE_W + 44)
-        for y, x in zip(ys, xs):
-            diag = (x + y * 1.1) - glint_pos
-            if -1.4 <= diag <= 1.4:
-                canvas[y, x] = COL_GLINT
-            elif -3.2 <= diag <= 3.2:
-                canvas[y, x] = COL_GLINT_SOFT
-
-    # 5. Subtle Pixel Sparkles around the logo (Game Boy Title Screen magic!)
-    if frame_idx is not None:
-        sparks = [
-            (7, 5, 0, COL_SPARK_Y),
-            (BASE_W - 8, 5, 6, COL_SPARK_P),
-            (54, 4, 12, COL_SPARK_C),
-            (BASE_W - 14, BASE_H - 6, 18, COL_SPARK_Y),
-            (22, BASE_H - 5, 9, COL_SPARK_P),
-        ]
-        for sx, sy, offset, scol in sparks:
-            st = (frame_idx + offset) % total_frames
-            if st in (0, 3):
-                canvas[sy, sx] = scol
-            elif st in (1, 2):
-                canvas[sy, sx] = COL_GLINT
-                for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                    if 0 <= sy + dy < BASE_H and 0 <= sx + dx < BASE_W:
-                        canvas[sy + dy, sx + dx] = scol
-
-    # 6. Sleek 1px Neon Pixel Border on dark card version
-    if not transparent:
-        # Outer 1px border inset by 1px with chamfered pixel corners
-        canvas[1, 2:-2] = COL_BORDER
-        canvas[-2, 2:-2] = COL_BORDER
-        canvas[2:-2, 1] = COL_BORDER
-        canvas[2:-2, -2] = COL_BORDER
-        # Corner pink accents
-        for cy, cx in [(2, 2), (2, BASE_W - 3), (BASE_H - 3, 2), (BASE_H - 3, BASE_W - 3)]:
-            canvas[cy, cx] = PINK_DEPTH[1]
-
-    img = Image.fromarray(canvas, mode="RGBA")
-    img = img.resize((BASE_W * SCALE, BASE_H * SCALE), Image.NEAREST)
-    return img
-
-# Generate static transparent PNG (4x scale for extra crispness, still tiny!)
-static_trans = render_gb_frame(None, 24, transparent=True)
-# Re-render static transparent at 4x for crisp hi-DPI usage
-static_trans_4x = render_gb_frame(None, 24, transparent=True).resize((BASE_W * 4, BASE_H * 4), Image.NEAREST)
-static_trans_4x.save("krishn-tundia-3d-gb-transparent.png", optimize=True)
-
-# Generate animated 24-frame loop (100ms/frame = 2.4s smooth loop!)
-N_FRAMES = 24
-anim_frames = [render_gb_frame(i, N_FRAMES, transparent=False).convert("RGB") for i in range(N_FRAMES)]
-
-# Build global optimized palette for tiny GIF
-p_frames = [f.quantize(colors=32, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE) for f in anim_frames]
-gif_path = "krishn-tundia-3d-gb.gif"
-p_frames[0].save(
-    gif_path,
-    save_all=True,
-    append_images=p_frames[1:],
-    duration=95,
-    loop=0,
-    optimize=True,
-)
-
-# Save ultra-tiny lossless Animated WebP
-webp_path = "krishn-tundia-3d-gb.webp"
-anim_frames[0].save(
-    webp_path,
-    save_all=True,
-    append_images=anim_frames[1:],
-    duration=95,
-    loop=0,
-    lossless=True,
-    method=6,
-    quality=85,
-)
-
-# Also save a crisp preview strip showing 3 phases + transparent PNG on checkerboard so we can inspect!
-preview = Image.new("RGB", (BASE_W * SCALE, BASE_H * SCALE * 3 + 12), (20, 26, 40))
-preview.paste(anim_frames[0], (0, 0))
-preview.paste(anim_frames[8], (0, BASE_H * SCALE + 4))
-preview.paste(anim_frames[16], (0, (BASE_H * SCALE + 4) * 2))
-preview.save("preview_check.png")
-
-print(f"GIF size:  {os.path.getsize(gif_path)/1024:.1f} KB ({BASE_W*SCALE}x{BASE_H*SCALE})")
-print(f"WebP size: {os.path.getsize(webp_path)/1024:.1f} KB ({BASE_W*SCALE}x{BASE_H*SCALE})")
-print(f"Transparent PNG size: {os.path.getsize('krishn-tundia-3d-gb-transparent.png')/1024:.1f} KB ({BASE_W*4}x{BASE_H*4})")
-
 <p align="center">
-  <a href="https://github.com/syvixor/skills-icons">
-    <img src="https://skills.syvixor.com/api/icons?i=chatgpt,claudeai,claudecode,deepseek,googlegemini,grok,huggingface,minimax,upstageai" alt="Core AI & LLM Providers" />
-  </a>
-</p>
-
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408 232" width="408" height="232" role="img" aria-label="KrishnTundia Sub-Sea AI Cyberden ASCII Animation">
   <defs>
     <clipPath id="vp"><rect x="6" y="17" width="396" height="198" /></clipPath>
@@ -506,4 +156,170 @@ print(f"Transparent PNG size: {os.path.getsize('krishn-tundia-3d-gb-transparent.
         <text x="258" y="246" class="pk">QWEN</text><text x="258" y="257" class="mg">[◉_◉]</text><text x="258" y="268" class="mg">/|≡|\</text><text x="264" y="279" class="pk">/ \</text>
 
         
+        <text x="42" y="356" class="tl">╠═════════════════════════════════════════════┼──────╣</text>
+        <text x="48" y="356" class="sl">FL-01</text>
+        <text x="54" y="312" class="cy">AZURE</text><text x="54" y="334" class="sv">[o_o]</text><text x="84" y="334" class="mn">_=</text><text x="60" y="345" class="sl">d b</text>
+        <text x="108" y="312" class="pk">COHERE</text><text x="114" y="323" class="mg">[◉_◉]</text><text x="114" y="334" class="mg">/|≡|\</text><text x="120" y="345" class="pk">/ \</text>
+        <text x="168" y="312" class="cy">HUGGINGFACE</text><text x="186" y="334" class="sv">[o_o]</text><text x="216" y="334" class="gd">[#]</text><text x="192" y="345" class="sl">d b</text>
+        <text x="252" y="312" class="pk">MOONSHOT</text><text x="264" y="323" class="mg">[◉_◉]</text><text x="264" y="334" class="mg">/|≡|\</text><text x="270" y="345" class="pk">/ \</text>
+
         
+        <g class="lift">
+          <text x="324" y="48" class="gd">┌────┐</text>
+          <text x="324" y="59" class="pk">│****│</text>
+          <text x="324" y="70" class="gd">│LIFT│</text>
+          <text x="324" y="81" class="gd">└────┘</text>
+        </g>
+      </g>
+
+      
+      <g class="pbar">
+        <rect x="102" y="17" width="204" height="12" fill="#f43f8e" />
+        <text x="108" y="26" class="gd"> &gt;&gt; CELL PING: KrishnTundia &lt;&lt; </text>
+      </g>
+    </g>
+
+    
+    <g class="s2" clip-path="url(#vp)">
+      <g class="pscroll">
+        <text x="12" y="37" class="wm">▓▓▒▒░░</text><text x="360" y="37" class="wm">░░▒▒▓▓</text>
+        <text x="12" y="59" class="wm">▒▒▓░░ </text><text x="360" y="59" class="wm"> ░░▓▒▒</text>
+        <text x="12" y="81" class="wm">▓░░▒  </text><text x="360" y="81" class="wm">  ▒░░▓</text>
+        <text x="12" y="103" class="wm">▒▓▓░  </text><text x="360" y="103" class="wm">  ░▓▓▒</text>
+        <text x="12" y="125" class="wm">▓▓▒▒░░</text><text x="360" y="125" class="wm">░░▒▒▓▓</text>
+        <text x="12" y="147" class="wm">▒▒▓░░ </text><text x="360" y="147" class="wm"> ░░▓▒▒</text>
+        <text x="12" y="169" class="wm">▓░░▒  </text><text x="360" y="169" class="wm">  ▒░░▓</text>
+        <text x="12" y="191" class="wm">▒▓▓░  </text><text x="360" y="191" class="wm">  ░▓▓▒</text>
+        <text x="12" y="213" class="wm">▓▓▒▒░░</text><text x="360" y="213" class="wm">░░▒▒▓▓</text>
+        <text x="12" y="235" class="wm">▒▒▓░░ </text><text x="360" y="235" class="wm"> ░░▓▒▒</text>
+        <text x="66" y="48" class="cy">│</text><text x="102" y="92" class="tl">┆</text>
+        <text x="66" y="147" class="cy">│</text><text x="102" y="191" class="tl">┆</text>
+        <text x="300" y="70" class="tl">┆</text><text x="336" y="114" class="cy">│</text>
+        <text x="300" y="169" class="tl">┆</text><text x="336" y="213" class="cy">│</text>
+      </g>
+      <line x1="153" y1="17" x2="153" y2="215" stroke="#164e63" stroke-width="1.5" />
+      <line x1="255" y1="17" x2="255" y2="215" stroke="#164e63" stroke-width="1.5" />
+      <g class="pcar">
+        <text x="156" y="70" class="sl">   ║  CABLE  ║  </text>
+        <text x="156" y="81" class="gd">╔══════════════╗</text>
+        <text x="156" y="92" class="pk">║ OPENAI  xAI  ║</text>
+        <text x="156" y="103" class="cy">║ CLAUDE GEMINI║</text>
+        <text x="156" y="114" class="gd">║ DEEPSEEK META║</text>
+        <text x="156" y="125" class="w">║ [◉][◉][◉][◉] ║</text>
+        <text x="156" y="136" class="gd">╚══════════════╝</text>
+      </g>
+      <text x="120" y="37" class="gd">▼ ELEVATOR DESCENT: B-MAX ▼</text>
+      <text x="114" y="202" class="mg">DEST: B-MAX // KrishnTundia</text>
+    </g>
+
+    
+    <g class="s3" clip-path="url(#vp)">
+      <rect x="84" y="28" width="240" height="66" fill="#081428" />
+      <rect x="81" y="25" width="246" height="72" fill="none" stroke="#164e63" stroke-width="1.2" />
+      <g class="jelly">
+        <text x="138" y="48" class="vl"> .--.</text>
+        <text x="138" y="59" class="mg">(____)</text>
+        <text x="138" y="70" class="vl"> ||||</text>
+      </g>
+      <text x="270" y="59" class="ic">o</text><text x="294" y="70" class="cy">°</text><text x="96" y="81" class="wm">≈≈≈</text>
+      <text x="18" y="37" class="gn">[▪▫::]</text><text x="342" y="37" class="vl">[::▫▪]</text>
+      <text x="18" y="48" class="cy">[▫▪::]</text><text x="342" y="48" class="mg">[::▪▫]</text>
+      <text x="18" y="59" class="gn">[▪▫::]</text><text x="342" y="59" class="vl">[::▫▪]</text>
+      <text x="18" y="70" class="cy">[▫▪::]</text><text x="342" y="70" class="mg">[::▪▫]</text>
+      <text x="18" y="81" class="gn">[▪▫::]</text><text x="342" y="81" class="vl">[::▫▪]</text>
+      <text x="18" y="92" class="cy">[▫▪::]</text><text x="342" y="92" class="mg">[::▪▫]</text>
+      <text x="132" y="114" class="gd">[ ADMIN: KrishnTundia ]</text>
+      <text x="18" y="125" class="gd">┌──────┐</text><text x="18" y="136" class="gd">│B-MAX │</text>
+      <text x="18" y="147" class="tl">│      │</text><text x="18" y="158" class="tl">│      │</text>
+      <text x="18" y="169" class="tl">│      │</text><text x="18" y="180" class="tl">│      │</text>
+      <text x="18" y="191" class="tl">│      │</text><text x="18" y="202" class="gd">└──────┘</text>
+      <g class="cdin">
+        <text x="72" y="158" class="pk">OAI   ANT   GGL   xAI</text>
+        <text x="72" y="169" class="mg">[◉]   [◉]   [◉]   [◉]</text>
+        <text x="72" y="180" class="mg">/|\   /|\   /|\   /|\</text>
+        <text x="72" y="191" class="pk">/ \   / \   / \   / \</text>
+      </g>
+      <text x="222" y="125" class="cy">┌─────┐┌───────┐</text>
+      <text x="222" y="136" class="mn">│&gt;01_││ CYBER │</text>
+      <text x="222" y="147" class="cy">└──┬──┘└───┬───┘</text>
+      <text x="276" y="158" class="gd">╔═╗╔═╗</text>
+      <text x="216" y="169" class="vl">╔══════════╩═╩╩═╩╗</text>
+      <text x="216" y="180" class="sl">║ [▓▓▓▓▓]  [_]P  ║</text>
+      <text x="216" y="191" class="tl">║                ║</text>
+      <text x="216" y="202" class="tl">╩                ╩</text>
+      <text x="336" y="136" class="sl"> ▄▄▄▄ </text>
+      <text x="336" y="147" class="ic">[█══█]</text>
+      <text x="336" y="158" class="sv"> \__/ </text>
+      <text x="324" y="169" class="sv">===/|\</text>
+      <text x="336" y="180" class="vl">  /==|</text>
+      <text x="342" y="191" class="vl">  |==|</text>
+      <text x="336" y="202" class="sl"> _/  \_</text>
+      <text x="12" y="213" class="tl">════════════════════════════════════════════════════════════════</text>
+    </g>
+
+    
+    <g class="s4" clip-path="url(#vp)">
+      <text x="54" y="37" class="tl">┌──────────┐  ┌──────────────────┐  ┌──────────┐</text>
+      <text x="54" y="48" class="gn">│ &gt;&gt; 0110  │  │  SYS: INFO FLOW  │  │  0110 &lt;&lt; │</text>
+      <text x="54" y="59" class="tl">└──────────┘  └──────────────────┘  └──────────┘</text>
+      <text x="150" y="81" class="sl">      ▄▄▄▄▄▄▄      </text>
+      <text x="150" y="92" class="sl">     █████████     </text>
+      <text x="150" y="103" class="ic">    ▐▓▓▓▀▀▀▓▓▓▌    </text>
+      <text x="150" y="114" class="sv">     \   ‿   /     </text>
+      <text x="150" y="125" class="vl">    __|_____|__    </text>
+      <text x="150" y="136" class="vl">   /  /|   |\  \   </text>
+      <text x="84" y="147" class="gd">╔════╗ ╔════╗</text>
+      <text x="84" y="158" class="gd">║BOOT║ ║BOOT║</text>
+      <text x="54" y="169" class="cy">╔════╩════╩═╩════╩═══════════════════════════════╗</text>
+      <text x="54" y="180" class="mg">║  [▓▓▓▓▓▓▓▓▓▓]     CYBERDEN TERMINAL      [◉◉]  ║</text>
+      <text x="54" y="191" class="cy">╚════════════════════════════════════════════════╝</text>
+      <text x="120" y="202" class="gd">LOCKING OPTIC: KrishnTundia</text>
+      <rect x="52" y="34" width="304" height="156" fill="none" stroke="#facc15" stroke-width="1.5" stroke-dasharray="14 276 28 128" class="ret" />
+    </g>
+
+    
+    <g class="s5" clip-path="url(#vp)">
+      <text x="18" y="37" class="wm">01</text><text x="378" y="37" class="wm">10</text>
+      <text x="18" y="191" class="wm">10</text><text x="378" y="191" class="wm">01</text>
+      <text x="138" y="37" class="sl">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</text>
+      <text x="120" y="48" class="sl">▄██████████████████████████▄</text>
+      <text x="108" y="59" class="tl">▄███▀▀                    ▀▀███▄</text>
+      <rect x="48" y="72" width="132" height="55" fill="#081428" />
+      <rect x="228" y="72" width="132" height="55" fill="#081428" />
+      <g clip-path="url(#lens)">
+        <rect x="-40" y="66" width="26" height="65" fill="#22d3ee" opacity="0.24" transform="skewX(-20)" class="glint" />
+      </g>
+      <text x="42" y="70" class="cy">╔══════════════════════╗      ╔══════════════════════╗</text>
+      <text x="42" y="81" class="cy">║                      ║      ║                      ║</text>
+      <text x="42" y="92" class="cy">║                      ╠══════╣                      ║</text>
+      <text x="42" y="103" class="cy">║                      ║      ║                      ║</text>
+      <text x="42" y="114" class="cy">║                      ║      ║                      ║</text>
+      <text x="42" y="125" class="cy">║                      ║      ║                      ║</text>
+      <text x="42" y="136" class="cy">╚══════════════════════╝      ╚══════════════════════╝</text>
+      <text x="180" y="92" class="mg">╠══════╣</text>
+      <text x="18" y="92" class="mg">════</text><text x="366" y="92" class="mg">════</text>
+      <text x="54" y="81" class="mg">┌</text><text x="168" y="81" class="mg">┐</text>
+      <text x="54" y="125" class="mg">└</text><text x="168" y="125" class="mg">┘</text>
+      <text x="234" y="81" class="mg">┌</text><text x="348" y="81" class="mg">┐</text>
+      <text x="234" y="125" class="mg">└</text><text x="348" y="125" class="mg">┘</text>
+      <text x="78" y="103" class="w glow">INFORMATION</text>
+      <text x="258" y="103" class="w glow">IS CURRENCY</text>
+      <text x="186" y="147" class="sl">/    \</text>
+      <text x="168" y="158" class="sv">\  ════  /</text>
+      <text x="162" y="169" class="tl">\__________/</text>
+      <text x="138" y="180" class="wm">▄██▀▀      ▀▀██▄</text>
+      <text x="132" y="202" class="gd">[ ADMIN: KrishnTundia ]</text>
+    </g>
+  </g>
+</svg>
+</p>
+
+<p align="center">
+  <a href="https://github.com/syvixor/skills-icons">
+    <img src="https://skills.syvixor.com/api/icons?i=chatgpt,claudeai,claudecode,deepseek,googlegemini,grok,huggingface,minimax,upstageai" alt="Core AI & LLM Providers" />
+  </a>
+</p>
+
+<p align="center">
+
+</p><img width="408" height="232" alt="gemini-svg (1)" src="https://github.com/user-attachments/assets/31724ad6-2366-4d37-9cfa-70b155337eef" />
