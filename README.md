@@ -4,7 +4,12 @@
 
 <p align="center">
   <a href="https://github.com/syvixor/skills-icons">
-    <img src="https://skills.syvixor.com/api/icons?i=chatgpt,claudeai,claudecode,deepseek,googlegemini,grok,huggingface,minimax,upstageai" alt="Core AI & LLM Providers" />
+    <img src="https://skills.syvixor.com/api/icons?i=chatgpt,claudeai,claudecode,deepseek,googlegemini,grok,huggingface" alt="Core AI & LLM Providers" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/syvixor/skills-icons">
+    <img src="https://skills.syvixor.com/api/icons?i=aisdk,aiscript,anyscale,cline,codegeex,codex,comfyui,crewai,geminicli,genkit,langchain,litert,llamaindex,llmrouter,lmstudio,modelcontextprotocol,myshellai,openclaw,opencode,openwebui,oumi&perline=7" alt="AI Frameworks, SDKs & Tooling" />
   </a>
 </p>
 
