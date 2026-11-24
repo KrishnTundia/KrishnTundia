@@ -1,4 +1,4 @@
-name: Update Font Awesome Brands RGB Mesh
+name: Update RGB Mixer Pads
 
 on:
   schedule:
@@ -6,35 +6,26 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "scripts/gen-mesh.mjs"
+      - "scripts/gen-pads.mjs"
 
 permissions:
   contents: write
 
 jobs:
-  build-mesh:
+  build-pads:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Install Font Awesome Free & Simple Icons in /tmp
-        run: |
-          mkdir -p /tmp/fa-tools
-          npm install --prefix /tmp/fa-tools --no-audit --no-fund @fortawesome/fontawesome-free@latest simple-icons@latest
-
-      - name: Generate FA Brand tiles, RGB pads & update README
+      - name: Generate 3-stage RGB mixer pads from live GitHub load
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FA_DEPS_DIR: /tmp/fa-tools/node_modules
-        run: node scripts/gen-mesh.mjs
-
-      - name: Commit updated mesh
+        run: node scripts/gen-pads.mjs
+      - name: Commit updated pads
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add fa-icons/ pads/ README.md
-          git diff --staged --quiet || (git commit -m "chore: update Font Awesome brands RGB mesh" && git push)
+          git add pads/
+          git diff --staged --quiet || (git commit -m "chore: refresh RGB mixer pads" && git push)
