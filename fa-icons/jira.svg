@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Jira">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#0052CC" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(55.00,55.00) scale(0.28516)" fill="#0052CC"><path d="M498.5 241.7c-72.9-72.7-169.4-169.9-241.5-241.7-165.5 164.9-242.5 241.7-242.5 241.7-7.9 7.9-7.9 20.7 0 28.7 132.8 132.3 61.8 61.5 242.5 241.6 379.4-378 15.7-16.7 241.5-241.7 8-7.9 8-20.7 0-28.6zM257 331.7l-76-75.7 76-75.7 76 75.7-76 75.7z"/></g>
+</svg>

@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Sellsy">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#e2e8f0" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(55.00,69.60) scale(0.22812)" fill="#e2e8f0"><path d="M540 237.3c3.1-12.3 4.3-24.8 4.3-37.4 0-92.5-75.4-167.9-167.9-167.9-77.2 0-144.6 53-163 127.8-15.3-13.2-34.9-20.5-55.2-20.5-46.3 0-84 37.7-84 84 0 7.4 .9 15 3.1 22.4-42.9 20.2-70.8 63.7-70.8 111.2 0 68 55.5 123.2 123.2 123.2l381.2 0c67.7 0 123.2-55.2 123.2-123.2 0-56.4-38.9-106-94.1-119.5zM200.2 401.6c0 8.3-7 15.3-15.3 15.3l-30.9 0c-8.3 0-15.3-7-15.3-15.3l0-110.9c0-8.3 7-15.3 15.3-15.3l30.9 0c8.3 0 15.3 7 15.3 15.3l0 110.9zm89.5 0c0 8.3-7 15.3-15.3 15.3l-30.9 0c-8.3 0-15.3-7-15.3-15.3l0-131.5c0-8.3 7-15.3 15.3-15.3l30.9 0c8.3 0 15.3 7 15.3 15.3l0 131.5zm89.5 0c0 8.3-7 15.3-15.3 15.3l-31 0c-8.3 0-15.3-7-15.3-15.3l0-162.7c0-8.3 7-15.3 15.3-15.3l31 0c8.3 0 15.3 7 15.3 15.3l0 162.7zm87 0c0 8.3-7 15.3-15.3 15.3l-28.5 0c-8.3 0-15.3-7-15.3-15.3l0-224.6c0-8.6 7-15.6 15.3-15.6l28.5 0c8.3 0 15.3 7 15.3 15.6l0 224.6z"/></g>
+</svg>

@@ -4,26 +4,21 @@
     <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff" stop-opacity=".34"/><stop offset="28%" stop-color="#fff" stop-opacity=".06"/><stop offset="76%" stop-color="#000" stop-opacity=".04"/><stop offset="100%" stop-color="#000" stop-opacity=".28"/></linearGradient>
     <radialGradient id="vig" cx="50%" cy="50%" r="58%"><stop offset="68%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".32"/></radialGradient>
     <radialGradient id="flare" cx="50%" cy="48%" r="56%"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="45%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
-    <radialGradient id="g0" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#d9f99d"/><stop offset="62%" stop-color="#84cc16"/><stop offset="100%" stop-color="#3f6212"/></radialGradient>
-    <radialGradient id="g1" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#99f6e4"/><stop offset="62%" stop-color="#2dd4bf"/><stop offset="100%" stop-color="#0f766e"/></radialGradient>
-    <radialGradient id="g2" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fed7aa"/><stop offset="62%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient>
-    <radialGradient id="g3" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fef9c3"/><stop offset="62%" stop-color="#facc15"/><stop offset="100%" stop-color="#b47b04"/></radialGradient>
-    <radialGradient id="g4" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bae6fd"/><stop offset="62%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0369a1"/></radialGradient>
+    <radialGradient id="g0" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bae6fd"/><stop offset="62%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0369a1"/></radialGradient>
+    <radialGradient id="g1" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fed7aa"/><stop offset="62%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient>
+    <radialGradient id="g2" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#ff9ebb"/><stop offset="62%" stop-color="#ff3b7a"/><stop offset="100%" stop-color="#b8114b"/></radialGradient>
+    <radialGradient id="g3" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#99f6e4"/><stop offset="62%" stop-color="#2dd4bf"/><stop offset="100%" stop-color="#0f766e"/></radialGradient>
+    <radialGradient id="g4" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#f5d0fe"/><stop offset="62%" stop-color="#d946ef"/><stop offset="100%" stop-color="#7e22ce"/></radialGradient>
+    <radialGradient id="g5" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fef9c3"/><stop offset="62%" stop-color="#facc15"/><stop offset="100%" stop-color="#b47b04"/></radialGradient>
   </defs>
   <style>
-    .l1{opacity:0;animation:c1 11s linear -2.48s infinite}@keyframes c1{0%,27.27%{opacity:0}29.09%,56.36%{opacity:1}56.55%,100%{opacity:0}}
-    .l2{opacity:0;animation:c2 11s linear -2.48s infinite}@keyframes c2{0%,54.55%{opacity:0}56.36%,74.55%{opacity:1}74.73%,100%{opacity:0}}
-    .l3{opacity:0;animation:c3 11s linear -2.48s infinite}@keyframes c3{0%,72.73%{opacity:0}74.55%,92.73%{opacity:1}92.91%,100%{opacity:0}}
-    .l4{opacity:0;animation:c4 11s linear -2.48s infinite}@keyframes c4{0%,90.91%{opacity:0}92.73%,98.18%{opacity:1}100%{opacity:0}}
-    .dim{animation:dA 6.62s ease-in-out -0.91s infinite}@keyframes dA{
-        0%,100%{opacity:.74} 14%{opacity:.30} 28%{opacity:.32}
-        32%{opacity:0} 35%{opacity:.38} 38%{opacity:0}
-        46%{opacity:.30} 62%{opacity:.74} 76%{opacity:.28}
-        80%{opacity:0} 83%{opacity:.36} 86%{opacity:.02} 94%{opacity:.70}}
-    .flr{opacity:0;animation:fA 6.62s ease-in-out -0.91s infinite}@keyframes fA{
-        0%,29%,44%,77%,92%,100%{opacity:0}
-        32%,38%{opacity:.95} 35%{opacity:.30}
-        80%,86%{opacity:.90} 83%{opacity:.26}}
+    .l1{opacity:0;animation:c1 10s linear -2.68s infinite}@keyframes c1{0%,10.00%{opacity:0}12.00%,32.00%{opacity:1}32.20%,100%{opacity:0}}
+    .l2{opacity:0;animation:c2 10s linear -2.68s infinite}@keyframes c2{0%,30.00%{opacity:0}32.00%,62.00%{opacity:1}62.20%,100%{opacity:0}}
+    .l3{opacity:0;animation:c3 10s linear -2.68s infinite}@keyframes c3{0%,60.00%{opacity:0}62.00%,72.00%{opacity:1}72.20%,100%{opacity:0}}
+    .l4{opacity:0;animation:c4 10s linear -2.68s infinite}@keyframes c4{0%,70.00%{opacity:0}72.00%,82.00%{opacity:1}82.20%,100%{opacity:0}}
+    .l5{opacity:0;animation:c5 10s linear -2.68s infinite}@keyframes c5{0%,80.00%{opacity:0}82.00%,98.00%{opacity:1}100%{opacity:0}}
+    .dim{animation:dA 5.11s ease-in-out -4.26s infinite}@keyframes dA{0%,100%{opacity:.74}14%{opacity:.30}28%{opacity:.32}32%{opacity:0}35%{opacity:.38}38%{opacity:0}46%{opacity:.30}62%{opacity:.74}76%{opacity:.28}80%{opacity:0}83%{opacity:.36}86%{opacity:.02}94%{opacity:.70}}
+    .flr{opacity:0;animation:fA 5.11s ease-in-out -4.26s infinite}@keyframes fA{0%,29%,44%,77%,92%,100%{opacity:0}32%,38%{opacity:.95}35%{opacity:.30}80%,86%{opacity:.90}83%{opacity:.26}}
     @media(prefers-reduced-motion:reduce){.dim{animation:none;opacity:.25}.flr,rect[class^="l"]{animation:none;opacity:0}}
   </style>
   <rect x="2" y="2" width="252" height="252" rx="40" fill="url(#case)" stroke="#2e3545" stroke-width="4"/>
@@ -34,6 +29,7 @@
     <rect class="l2" x="14" y="14" width="228" height="228" rx="32" fill="url(#g2)"/>
     <rect class="l3" x="14" y="14" width="228" height="228" rx="32" fill="url(#g3)"/>
     <rect class="l4" x="14" y="14" width="228" height="228" rx="32" fill="url(#g4)"/>
+    <rect class="l5" x="14" y="14" width="228" height="228" rx="32" fill="url(#g5)"/>
   </g>
   <rect class="dim" x="14" y="14" width="228" height="228" rx="32" fill="#050810"/>
   <rect class="flr" x="14" y="14" width="228" height="228" rx="32" fill="url(#flare)"/>

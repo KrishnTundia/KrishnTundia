@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Neos">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#e2e8f0" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(64.13,55.00) scale(0.28516)" fill="#e2e8f0"><path d="M383.8 512l-95.1 0-108.2-154.5 0 91.1-86.4 63.4-97.7 0 0-482.2 40.5-29.8 108 0 123.7 176.1 0-112.7 86.4-63.4 97.7 0 0 461.5-68.9 50.5zM7.2 35.3l0 460.7 72-52.9 0-249.1 215.5 307.6 84.8 0 52.4-38.2-78.3 0-316.1-450.5-30.2 22.3zM89.7 501.9l80-58.8 0-101-79.8-114.4 0 220.9-72.6 53.3 72.3 0 0 0zM49 10.8l310.6 442.6 82.4 0 0-442.6-79.8 0 0 317.6-222.9-317.6-90.3 0zM279.4 191.6l72 102.8 0-278.5-72 53 0 122.7z"/></g>
+</svg>

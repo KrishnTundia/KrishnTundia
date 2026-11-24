@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Magento">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#e2e8f0" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(64.13,55.00) scale(0.28516)" fill="#e2e8f0"><path d="M445.9 127.9l0 256.1-63.4 36.5 0-255.8-158.5-91.6-158.6 91.6 .4 255.9-63.3-36.6 0-255.9 221.9-128.1 221.5 127.9zM255.8 420.5l-31.6 18.4-31.8-18.2 0-256-63.3 36.6 .1 255.9 94.9 54.9 95.1-54.9 0-256-63.4-36.6 0 255.9z"/></g>
+</svg>

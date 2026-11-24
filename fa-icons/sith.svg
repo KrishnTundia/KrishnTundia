@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Sith">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#e2e8f0" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(64.13,55.00) scale(0.28516)" fill="#e2e8f0"><path d="M0 32l69.7 118.8-58.9-11.5 69.8 91c-3 17-3 34.4 0 51.4l-69.8 91 58.9-11.5-69.7 118.8 118.8-69.7-11.5 58.9 91-69.8c17 3 34.5 3 51.5 0l91 69.8-11.5-58.9 118.7 69.7-69.7-118.8 58.9 11.5-69.8-91c3-17 3-34.4 0-51.4l69.8-91-58.9 11.5 69.7-118.8-118.7 69.7 11.5-58.9-91.1 69.9c-8.5-1.5-17.1-2.3-25.7-2.3s-17.2 .8-25.7 2.3L107.2 42.8 118.8 101.7 0 32zM224 380.2a124.2 124.2 0 1 1 0-248.4 124.2 124.2 0 1 1 0 248.4zm0-211.8a87.6 87.6 0 1 0 0 175.1 87.6 87.6 0 1 0 0-175.1z"/></g>
+</svg>

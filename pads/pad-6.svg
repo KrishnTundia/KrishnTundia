@@ -5,27 +5,20 @@
     <radialGradient id="vig" cx="50%" cy="50%" r="58%"><stop offset="68%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".32"/></radialGradient>
     <radialGradient id="flare" cx="50%" cy="48%" r="56%"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="45%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
     <radialGradient id="g0" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fef9c3"/><stop offset="62%" stop-color="#facc15"/><stop offset="100%" stop-color="#b47b04"/></radialGradient>
-    <radialGradient id="g1" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bae6fd"/><stop offset="62%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0369a1"/></radialGradient>
-    <radialGradient id="g2" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#f5d0fe"/><stop offset="62%" stop-color="#d946ef"/><stop offset="100%" stop-color="#7e22ce"/></radialGradient>
-    <radialGradient id="g3" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#d9f99d"/><stop offset="62%" stop-color="#84cc16"/><stop offset="100%" stop-color="#3f6212"/></radialGradient>
-    <radialGradient id="g4" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fed7aa"/><stop offset="62%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient>
-    <radialGradient id="g5" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bfdbfe"/><stop offset="62%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></radialGradient>
+    <radialGradient id="g1" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#fed7aa"/><stop offset="62%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2410c"/></radialGradient>
+    <radialGradient id="g2" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#ff9ebb"/><stop offset="62%" stop-color="#ff3b7a"/><stop offset="100%" stop-color="#b8114b"/></radialGradient>
+    <radialGradient id="g3" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bfdbfe"/><stop offset="62%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></radialGradient>
+    <radialGradient id="g4" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#bae6fd"/><stop offset="62%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0369a1"/></radialGradient>
+    <radialGradient id="g5" cx="50%" cy="48%" r="64%" fx="50%" fy="46%"><stop offset="0%" stop-color="#fff"/><stop offset="22%" stop-color="#d9f99d"/><stop offset="62%" stop-color="#84cc16"/><stop offset="100%" stop-color="#3f6212"/></radialGradient>
   </defs>
   <style>
-    .l1{opacity:0;animation:c1 12s linear -11.03s infinite}@keyframes c1{0%,16.67%{opacity:0}18.33%,35.00%{opacity:1}35.17%,100%{opacity:0}}
-    .l2{opacity:0;animation:c2 12s linear -11.03s infinite}@keyframes c2{0%,33.33%{opacity:0}35.00%,60.00%{opacity:1}60.17%,100%{opacity:0}}
-    .l3{opacity:0;animation:c3 12s linear -11.03s infinite}@keyframes c3{0%,58.33%{opacity:0}60.00%,76.67%{opacity:1}76.83%,100%{opacity:0}}
-    .l4{opacity:0;animation:c4 12s linear -11.03s infinite}@keyframes c4{0%,75.00%{opacity:0}76.67%,93.33%{opacity:1}93.50%,100%{opacity:0}}
-    .l5{opacity:0;animation:c5 12s linear -11.03s infinite}@keyframes c5{0%,91.67%{opacity:0}93.33%,98.33%{opacity:1}100%{opacity:0}}
-    .dim{animation:dA 5.44s ease-in-out -2.96s infinite}@keyframes dA{
-        0%,100%{opacity:.74} 14%{opacity:.30} 28%{opacity:.32}
-        32%{opacity:0} 35%{opacity:.38} 38%{opacity:0}
-        46%{opacity:.30} 62%{opacity:.74} 76%{opacity:.28}
-        80%{opacity:0} 83%{opacity:.36} 86%{opacity:.02} 94%{opacity:.70}}
-    .flr{opacity:0;animation:fA 5.44s ease-in-out -2.96s infinite}@keyframes fA{
-        0%,29%,44%,77%,92%,100%{opacity:0}
-        32%,38%{opacity:.95} 35%{opacity:.30}
-        80%,86%{opacity:.90} 83%{opacity:.26}}
+    .l1{opacity:0;animation:c1 11s linear -10.26s infinite}@keyframes c1{0%,18.18%{opacity:0}20.00%,29.09%{opacity:1}29.27%,100%{opacity:0}}
+    .l2{opacity:0;animation:c2 11s linear -10.26s infinite}@keyframes c2{0%,27.27%{opacity:0}29.09%,56.36%{opacity:1}56.55%,100%{opacity:0}}
+    .l3{opacity:0;animation:c3 11s linear -10.26s infinite}@keyframes c3{0%,54.55%{opacity:0}56.36%,74.55%{opacity:1}74.73%,100%{opacity:0}}
+    .l4{opacity:0;animation:c4 11s linear -10.26s infinite}@keyframes c4{0%,72.73%{opacity:0}74.55%,92.73%{opacity:1}92.91%,100%{opacity:0}}
+    .l5{opacity:0;animation:c5 11s linear -10.26s infinite}@keyframes c5{0%,90.91%{opacity:0}92.73%,98.18%{opacity:1}100%{opacity:0}}
+    .dim{animation:dA 4.15s ease-in-out -2.54s infinite}@keyframes dA{0%,100%{opacity:.76}22%{opacity:.32}46%{opacity:.34}52%{opacity:0}56%{opacity:.40}60%{opacity:0}70%{opacity:.32}86%{opacity:.74}}
+    .flr{opacity:0;animation:fA 4.15s ease-in-out -2.54s infinite}@keyframes fA{0%,48%,68%,100%{opacity:0}52%,60%{opacity:.92}56%{opacity:.24}}
     @media(prefers-reduced-motion:reduce){.dim{animation:none;opacity:.25}.flr,rect[class^="l"]{animation:none;opacity:0}}
   </style>
   <rect x="2" y="2" width="252" height="252" rx="40" fill="url(#case)" stroke="#2e3545" stroke-width="4"/>

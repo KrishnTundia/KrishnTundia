@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Stumbleupon Circle">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#e2e8f0" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(55.00,55.00) scale(0.28516)" fill="#e2e8f0"><path d="M264 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496zm0 177.5c-9.8 0-17.8 8-17.8 17.8l0 106.9c0 40.9-33.9 73.9-74.9 73.9-41.4 0-74.9-33.5-74.9-74.9l0-46.5 57.3 0 0 45.8c0 10 8 17.8 17.8 17.8s17.8-7.9 17.8-17.8l0-108.4c0-40 34.2-72.1 74.7-72.1 40.7 0 74.7 32.3 74.7 72.6l0 23.7-34.1 10.1-22.9-10.7 0-20.6c.1-9.6-7.9-17.6-17.7-17.6zM431.6 309.1c0 41.4-33.5 74.9-74.9 74.9-41.2 0-74.9-33.2-74.9-74.2l0-46.8 22.9 10.7 34.1-10.1 0 47.1c0 9.8 8 17.6 17.8 17.6s17.8-7.9 17.8-17.6l0-48 57.3 0c-.1 45.9-.1 46.4-.1 46.4z"/></g>
+</svg>

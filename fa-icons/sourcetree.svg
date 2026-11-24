@@ -1,0 +1,16 @@
+<!-- Font Awesome Free Brands (CC BY 4.0) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="46" height="46" role="img" aria-label="Sourcetree">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2234"/>
+      <stop offset="100%" stop-color="#0b101b"/>
+    </linearGradient>
+    <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="40" fill="url(#bg)" stroke="#0052CC" stroke-opacity=".55" stroke-width="5"/>
+  <rect x="10" y="10" width="236" height="236" rx="34" fill="url(#gl)"/>
+  <g transform="translate(64.13,55.00) scale(0.28516)" fill="#0052CC"><path d="M427.4 203c0-112.1-90.9-203-203-203-112.1-.2-203 90.6-203.2 202.6-.1 43 13.5 84.8 38.7 119.6s60.9 60.6 101.8 73.8l0 101.7c0 3.8 1.5 7.4 4.2 10.1s6.3 4.2 10.1 4.2l96.4 0c3.8 0 7.4-1.5 10.1-4.2s4.2-6.3 4.2-10.1l0-101.6c40.8-13.2 76.5-39 101.7-73.7s38.9-76.5 39-119.4zm-271.6 0c0-90.8 137.3-90.8 137.3 0-.1 89.9-137.3 91-137.3 0z"/></g>
+</svg>
