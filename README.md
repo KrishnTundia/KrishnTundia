@@ -11,69 +11,69 @@
 </p>
 
 <p align="center">
-  <a href="https://chatgpt.com"><img src="./pads/fa-openai.svg" width="46" height="46" alt="ChatGPT / OpenAI" /></a>
-  <img src="./pads/pad-1.svg" width="46" height="46" alt="" />
-  <a href="https://claude.ai"><img src="./pads/fa-claude.svg" width="46" height="46" alt="Claude" /></a>
-  <img src="./pads/pad-2.svg" width="46" height="46" alt="" />
-  <a href="https://claude.com/product/claude-code"><img src="https://skills.syvixor.com/api/icons?i=claudecode&perline=1" width="46" height="46" alt="Claude Code" /></a>
-  <img src="./pads/pad-3.svg" width="46" height="46" alt="" />
-  <a href="https://www.deepseek.com"><img src="https://skills.syvixor.com/api/icons?i=deepseek&perline=1" width="46" height="46" alt="DeepSeek" /></a>
-  <img src="./pads/pad-4.svg" width="46" height="46" alt="" />
-  <a href="https://gemini.google.com"><img src="https://skills.syvixor.com/api/icons?i=googlegemini&perline=1" width="46" height="46" alt="Google Gemini" /></a>
-  <img src="./pads/pad-5.svg" width="46" height="46" alt="" />
-  <a href="https://grok.com"><img src="https://skills.syvixor.com/api/icons?i=grok&perline=1" width="46" height="46" alt="Grok" /></a>
-  <img src="./pads/pad-6.svg" width="46" height="46" alt="" />
-  <a href="https://huggingface.co"><img src="./pads/fa-hugging-face.svg" width="46" height="46" alt="Hugging Face" /></a>
-  <img src="./pads/pad-7.svg" width="46" height="46" alt="" />
-  <a href="https://www.minimax.io"><img src="https://skills.syvixor.com/api/icons?i=minimax&perline=1" width="46" height="46" alt="MiniMax" /></a>
+  <img src="https://skills.syvixor.com/api/icons?i=chatgpt&perline=1" width="46" height="46" alt="chatgpt" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=1&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=claudeai&perline=1" width="46" height="46" alt="claudeai" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=2&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=claudecode&perline=1" width="46" height="46" alt="claudecode" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=3&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=deepseek&perline=1" width="46" height="46" alt="deepseek" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=4&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=googlegemini&perline=1" width="46" height="46" alt="googlegemini" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=5&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=grok&perline=1" width="46" height="46" alt="grok" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=6&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=huggingface&perline=1" width="46" height="46" alt="huggingface" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=7&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=minimax&perline=1" width="46" height="46" alt="minimax" />
   <br />
-  <img src="./pads/pad-8.svg" width="46" height="46" alt="" />
-  <a href="https://www.upstage.ai"><img src="https://skills.syvixor.com/api/icons?i=upstageai&perline=1" width="46" height="46" alt="Upstage AI" /></a>
-  <img src="./pads/pad-9.svg" width="46" height="46" alt="" />
-  <a href="https://ai-sdk.dev"><img src="https://skills.syvixor.com/api/icons?i=aisdk&perline=1" width="46" height="46" alt="Vercel AI SDK" /></a>
-  <img src="./pads/pad-10.svg" width="46" height="46" alt="" />
-  <a href="https://aiscript.dev"><img src="https://skills.syvixor.com/api/icons?i=aiscript&perline=1" width="46" height="46" alt="AIScript" /></a>
-  <img src="./pads/pad-11.svg" width="46" height="46" alt="" />
-  <a href="https://www.anyscale.com"><img src="https://skills.syvixor.com/api/icons?i=anyscale&perline=1" width="46" height="46" alt="Anyscale" /></a>
-  <img src="./pads/pad-12.svg" width="46" height="46" alt="" />
-  <a href="https://cline.bot"><img src="https://skills.syvixor.com/api/icons?i=cline&perline=1" width="46" height="46" alt="Cline" /></a>
-  <img src="./pads/pad-13.svg" width="46" height="46" alt="" />
-  <a href="https://codegeex.cn"><img src="https://skills.syvixor.com/api/icons?i=codegeex&perline=1" width="46" height="46" alt="CodeGeeX" /></a>
-  <img src="./pads/pad-14.svg" width="46" height="46" alt="" />
-  <a href="https://openai.com/codex"><img src="https://skills.syvixor.com/api/icons?i=codex&perline=1" width="46" height="46" alt="OpenAI Codex" /></a>
-  <img src="./pads/pad-15.svg" width="46" height="46" alt="" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=8&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=upstageai&perline=1" width="46" height="46" alt="upstageai" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=9&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=aisdk&perline=1" width="46" height="46" alt="aisdk" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=10&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=aiscript&perline=1" width="46" height="46" alt="aiscript" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=11&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=anyscale&perline=1" width="46" height="46" alt="anyscale" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=12&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=cline&perline=1" width="46" height="46" alt="cline" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=13&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=codegeex&perline=1" width="46" height="46" alt="codegeex" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=14&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=codex&perline=1" width="46" height="46" alt="codex" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=15&user=KrishnTundia" width="46" height="46" alt="" />
   <br />
-  <a href="https://www.comfy.org"><img src="https://skills.syvixor.com/api/icons?i=comfyui&perline=1" width="46" height="46" alt="ComfyUI" /></a>
-  <img src="./pads/pad-16.svg" width="46" height="46" alt="" />
-  <a href="https://www.crewai.com"><img src="https://skills.syvixor.com/api/icons?i=crewai&perline=1" width="46" height="46" alt="CrewAI" /></a>
-  <img src="./pads/pad-17.svg" width="46" height="46" alt="" />
-  <a href="https://github.com/google-gemini/gemini-cli"><img src="https://skills.syvixor.com/api/icons?i=geminicli&perline=1" width="46" height="46" alt="Gemini CLI" /></a>
-  <img src="./pads/pad-18.svg" width="46" height="46" alt="" />
-  <a href="https://genkit.dev"><img src="https://skills.syvixor.com/api/icons?i=genkit&perline=1" width="46" height="46" alt="Genkit" /></a>
-  <img src="./pads/pad-19.svg" width="46" height="46" alt="" />
-  <a href="https://www.langchain.com"><img src="https://skills.syvixor.com/api/icons?i=langchain&perline=1" width="46" height="46" alt="LangChain" /></a>
-  <img src="./pads/pad-20.svg" width="46" height="46" alt="" />
-  <a href="https://developers.google.com/edge/litert"><img src="https://skills.syvixor.com/api/icons?i=litert&perline=1" width="46" height="46" alt="LiteRT" /></a>
-  <img src="./pads/pad-21.svg" width="46" height="46" alt="" />
-  <a href="https://www.llamaindex.ai"><img src="https://skills.syvixor.com/api/icons?i=llamaindex&perline=1" width="46" height="46" alt="LlamaIndex" /></a>
-  <img src="./pads/pad-22.svg" width="46" height="46" alt="" />
-  <a href="https://github.com/ulab-uiuc/LLMRouter"><img src="https://skills.syvixor.com/api/icons?i=llmrouter&perline=1" width="46" height="46" alt="LLMRouter" /></a>
+  <img src="https://skills.syvixor.com/api/icons?i=comfyui&perline=1" width="46" height="46" alt="comfyui" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=16&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=crewai&perline=1" width="46" height="46" alt="crewai" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=17&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=geminicli&perline=1" width="46" height="46" alt="geminicli" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=18&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=genkit&perline=1" width="46" height="46" alt="genkit" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=19&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=langchain&perline=1" width="46" height="46" alt="langchain" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=20&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=litert&perline=1" width="46" height="46" alt="litert" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=21&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=llamaindex&perline=1" width="46" height="46" alt="llamaindex" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=22&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=llmrouter&perline=1" width="46" height="46" alt="llmrouter" />
   <br />
-  <img src="./pads/pad-23.svg" width="46" height="46" alt="" />
-  <a href="https://lmstudio.ai"><img src="https://skills.syvixor.com/api/icons?i=lmstudio&perline=1" width="46" height="46" alt="LM Studio" /></a>
-  <img src="./pads/pad-24.svg" width="46" height="46" alt="" />
-  <a href="https://modelcontextprotocol.io"><img src="https://skills.syvixor.com/api/icons?i=modelcontextprotocol&perline=1" width="46" height="46" alt="Model Context Protocol" /></a>
-  <img src="./pads/pad-25.svg" width="46" height="46" alt="" />
-  <a href="https://myshell.ai"><img src="https://skills.syvixor.com/api/icons?i=myshellai&perline=1" width="46" height="46" alt="MyShell" /></a>
-  <img src="./pads/pad-26.svg" width="46" height="46" alt="" />
-  <a href="https://openclaw.ai"><img src="https://skills.syvixor.com/api/icons?i=openclaw&perline=1" width="46" height="46" alt="OpenClaw" /></a>
-  <img src="./pads/pad-27.svg" width="46" height="46" alt="" />
-  <a href="https://opencode.ai"><img src="https://skills.syvixor.com/api/icons?i=opencode&perline=1" width="46" height="46" alt="OpenCode" /></a>
-  <img src="./pads/pad-28.svg" width="46" height="46" alt="" />
-  <a href="https://openwebui.com"><img src="https://skills.syvixor.com/api/icons?i=openwebui&perline=1" width="46" height="46" alt="Open WebUI" /></a>
-  <img src="./pads/pad-29.svg" width="46" height="46" alt="" />
-  <a href="https://oumi.ai"><img src="https://skills.syvixor.com/api/icons?i=oumi&perline=1" width="46" height="46" alt="Oumi" /></a>
-  <img src="./pads/pad-30.svg" width="46" height="46" alt="" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=23&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=lmstudio&perline=1" width="46" height="46" alt="lmstudio" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=24&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=modelcontextprotocol&perline=1" width="46" height="46" alt="modelcontextprotocol" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=25&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=myshellai&perline=1" width="46" height="46" alt="myshellai" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=26&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=openclaw&perline=1" width="46" height="46" alt="openclaw" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=27&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=opencode&perline=1" width="46" height="46" alt="opencode" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=28&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=openwebui&perline=1" width="46" height="46" alt="openwebui" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=29&user=KrishnTundia" width="46" height="46" alt="" />
+  <img src="https://skills.syvixor.com/api/icons?i=oumi&perline=1" width="46" height="46" alt="oumi" />
+  <img src="https://YOUR-APP.vercel.app/api/pad?id=30&user=KrishnTundia" width="46" height="46" alt="" />
 </p>
 
 <p align="center">
